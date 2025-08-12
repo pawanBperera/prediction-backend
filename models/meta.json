@@ -1,0 +1,46 @@
+{
+  "target": "Diagnosis",
+  "positive_label": "Altered",
+  "numeric": [
+    "Age",
+    "Number of hours spent sitting per day"
+  ],
+  "categorical": [
+    "Childish diseases",
+    "Accident or serious trauma",
+    "High fevers in the last year",
+    "Frequency of alcohol consumption",
+    "Smoking habit"
+  ],
+  "feature_names": [
+    "num__Age",
+    "num__Number of hours spent sitting per day",
+    "cat__Childish diseases_no",
+    "cat__Childish diseases_yes",
+    "cat__Accident or serious trauma_no",
+    "cat__Accident or serious trauma_yes",
+    "cat__High fevers in the last year_less than 3 months ago",
+    "cat__High fevers in the last year_more than 3 months ago",
+    "cat__High fevers in the last year_no",
+    "cat__Frequency of alcohol consumption_every day",
+    "cat__Frequency of alcohol consumption_hardly ever or never",
+    "cat__Frequency of alcohol consumption_once a week",
+    "cat__Frequency of alcohol consumption_several times a day",
+    "cat__Frequency of alcohol consumption_several times a week",
+    "cat__Smoking habit_daily",
+    "cat__Smoking habit_never",
+    "cat__Smoking habit_occasional"
+  ],
+  "metrics": {
+    "accuracy": 0.85,
+    "f1_Altered": 0.4,
+    "roc_auc": 0.5556,
+    "classes": [
+      "Altered",
+      "Normal"
+    ],
+    "n_train": 80,
+    "n_test": 20,
+    "timestamp": 1754971548
+  }
+}
