@@ -1,0 +1,26 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Model artifacts
+models/
+
+# Data files
+data/raw/
+data/processed/
+
+# Environment files
+.env
+
+# IDE / Editor settings
+.idea/
+.vscode/
+
+# OS generated
+.DS_Store
+Thumbs.db
