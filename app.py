@@ -7,13 +7,27 @@ import pandas as pd
 import joblib, json
 import numpy as np
 
-from sklearn.pipeline import Pipeline  # for type hints
+from sklearn.pipeline import Pipeline
+
+from fastapi.middleware.cors import CORSMiddleware
 
 MODEL_DIR = Path("models")
 MODEL_PATH = MODEL_DIR / "model.joblib"
 META_PATH  = MODEL_DIR / "meta.json"
 
 app = FastAPI(title="Prediction API", version="1.0")
+
+# CORS: allow your React app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
 
 # Request model (frontend-friendly keys)
 class PredictRequest(BaseModel):
@@ -86,7 +100,7 @@ def model_info():
 
 @app.post("/predict")
 def predict(req: PredictRequest):
-    model = get_model()  # guarantees Pipeline, avoids “None has no attribute …”
+    model = get_model()
 
     row = {
         COL_MAP["age"]: req.age,
@@ -133,5 +147,5 @@ def _top_contributors(model: Pipeline, x_df: pd.DataFrame, top_k: int = 3) -> Li
         out = [{"feature": str(feats[i]), "impact": float(round(contrib[i], 4))} for i in idx]
         return out
     except (AttributeError, ValueError, KeyError):
-        # If pipeline/model isn’t as expected, just skip explanation.
+
         return []
